@@ -1,13 +1,10 @@
 plugins {
     id "net.ltgt.apt-eclipse" version "0.21"
-    id "com.github.johnrengelman.shadow" version "5.2.0"
     id "application"
 }
 
-
-
 version "0.1"
-group "cache.app"
+group "jar.app"
 
 repositories {
     mavenCentral()
@@ -16,7 +13,7 @@ repositories {
 
 configurations {
     // for dependencies that are needed for development only
-    developmentOnly
+    developmentOnly 
 }
 
 dependencies {
@@ -29,7 +26,6 @@ dependencies {
     implementation "io.micronaut:micronaut-runtime"
     implementation "io.micronaut:micronaut-http-server-netty"
     implementation "io.micronaut:micronaut-http-client"
-    implementation 'jar.app:jar-app:0.1'
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
     testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
@@ -41,7 +37,7 @@ dependencies {
 
 test.classpath += configurations.developmentOnly
 
-mainClassName = "cache.app.Application"
+mainClassName = "jar.app.Application"
 // use JUnit 5 platform
 test {
     useJUnitPlatform()
@@ -49,10 +45,6 @@ test {
 tasks.withType(JavaCompile){
     options.encoding = "UTF-8"
     options.compilerArgs.add('-parameters')
-}
-
-shadowJar {
-    mergeServiceFiles()
 }
 
 run.classpath += configurations.developmentOnly

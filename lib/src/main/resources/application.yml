@@ -1,0 +1,6 @@
+micronaut:
+  application:
+    name: jar-app
+  caches:
+    my-cache:
+      maximum-size: 10

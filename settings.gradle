@@ -1,1 +1,3 @@
 rootProject.name="cache-app"
+
+includeBuild "lib"
